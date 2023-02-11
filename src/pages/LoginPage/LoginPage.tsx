@@ -26,7 +26,7 @@ const LoginPage = () => {
     login(data.email, data.password)
 
   return (
-    <AuthPageLayout authMode='login' title='ua' subTitle='Login'>
+    <AuthPageLayout authMode='login' title='Mora' subTitle='Login'>
       <FormContainer>
         <BaseInput
           rules={{
