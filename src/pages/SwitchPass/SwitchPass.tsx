@@ -37,7 +37,7 @@ const SwitchPass = () => {
   }, [snack])
 
   return (
-    <AuthPageLayout title='ua' subTitle='Switch password' simpleAuth={false}>
+    <AuthPageLayout title='Mora' subTitle='Switch password' simpleAuth={false}>
       <FormContainer>
         <BaseInput
           required

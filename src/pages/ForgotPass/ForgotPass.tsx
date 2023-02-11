@@ -38,7 +38,7 @@ const ForgotPass = () => {
   }, [snack])
 
   return (
-    <AuthPageLayout title='ua' subTitle='Forgot password' simpleAuth={false}>
+    <AuthPageLayout title='Mora' subTitle='Forgot password' simpleAuth={false}>
       <FormContainer>
         <BaseInput
           rules={{

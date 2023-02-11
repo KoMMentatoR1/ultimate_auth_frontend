@@ -27,7 +27,7 @@ const RegisterPage = () => {
     registration(data.email, data.password, data.firstName, data.lastName)
 
   return (
-    <AuthPageLayout authMode='registration' title='UA' subTitle='Register'>
+    <AuthPageLayout authMode='registration' title='Mora' subTitle='Register'>
       <FormContainer>
         <BaseInput
           required
