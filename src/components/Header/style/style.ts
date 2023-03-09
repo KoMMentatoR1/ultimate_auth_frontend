@@ -1,8 +1,22 @@
-import styled from '@emotion/styled'
-import { AppBar } from '@mui/material'
-import { green } from '@mui/material/colors'
+import { AppBar, styled } from '@mui/material'
 
-export const CastomAppBar = styled(AppBar)`
-  position: fixed;
-  background-color: ${green[800]};
-`
+export const CastomAppBar = styled(AppBar)(({ theme }) => ({
+  position: 'fixed',
+  backgroundColor: theme.background.main,
+  boxShadow: 'none',
+  transition: 'background .1s linear',
+}))
+
+export const HeaderBox = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  color: theme.primary.main,
+}))
+
+export const ButtonContainer = styled('div')(({ theme }) => ({
+  ':hover': {
+    color: theme.primary.hover,
+    cursor: 'pointer',
+  },
+  transition: 'color .1s linear',
+}))

@@ -10,6 +10,7 @@ import {
 } from '../../components/Auth/AuthPageLayout'
 import { BaseInput } from '../../components/base/base-input'
 import { useAction } from '../../shared/hooks/useAction'
+import { useTypeSelector } from '../../shared/hooks/useTypeSelector'
 
 const RegisterPage = () => {
   const navigator = useNavigate()
@@ -23,6 +24,8 @@ const RegisterPage = () => {
 
   const { registration } = useAction()
 
+  const { user } = useTypeSelector(state => state.auth)
+
   const onSubmit: SubmitHandler<FieldValues> = data =>
     registration(data.email, data.password, data.firstName, data.lastName)
 
@@ -35,6 +38,7 @@ const RegisterPage = () => {
           error={errors.lastName ? true : false}
           name='lastName'
           control={control}
+          defaultValue={user.user.lastName || ''}
           rules={{ required: 'LastName is required' }}
           helperText={errors.lastName?.message as string}
         />
@@ -44,6 +48,7 @@ const RegisterPage = () => {
           error={errors.firstName ? true : false}
           name='firstName'
           control={control}
+          defaultValue={user.user.firstName || ''}
           rules={{ required: 'FirstName is required' }}
           helperText={errors.firstName?.message as string}
         />
@@ -52,6 +57,7 @@ const RegisterPage = () => {
           label='Email'
           error={errors.email ? true : false}
           name='email'
+          defaultValue={user.user.email || ''}
           control={control}
           helperText={errors.email?.message as string}
           rules={{

@@ -8,13 +8,8 @@ import {
   ThemButtonContainer,
   Title,
 } from '../style/style'
-import { IconButton } from '@mui/material'
-import DarkModeIcon from '@mui/icons-material/DarkMode'
-import LightModeIcon from '@mui/icons-material/LightMode'
-import { useTypeSelector } from '../../../../shared/hooks/useTypeSelector'
-import { useAction } from '../../../../shared/hooks/useAction'
-import { green, purple } from '@mui/material/colors'
 import { SimpleAuth } from '../../SimpleAuth'
+import { BaseThemeButton } from '../../../base/base-theme-button'
 
 interface AuthPageLayoutProps {
   title: string
@@ -24,12 +19,6 @@ interface AuthPageLayoutProps {
   simpleAuth?: boolean
 }
 
-const iconStyle = {
-  color: green[700],
-  fontSize: '30px',
-  transition: 'color .1s linear',
-}
-
 export const AuthPageLayout: FC<AuthPageLayoutProps> = ({
   title,
   subTitle,
@@ -37,9 +26,6 @@ export const AuthPageLayout: FC<AuthPageLayoutProps> = ({
   authMode = 'login',
   simpleAuth = true,
 }) => {
-  const { mode } = useTypeSelector(state => state.theme)
-  const { switchTheme } = useAction()
-
   return (
     <Background>
       <Container simpleAuth={simpleAuth}>
@@ -49,17 +35,7 @@ export const AuthPageLayout: FC<AuthPageLayoutProps> = ({
             <SubTitle>{subTitle}</SubTitle>
             {children}
             <ThemButtonContainer>
-              <IconButton
-                onClick={() => {
-                  mode === 'light' ? switchTheme('dark') : switchTheme('light')
-                }}
-              >
-                {mode === 'light' ? (
-                  <DarkModeIcon sx={{ ...iconStyle }} />
-                ) : (
-                  <LightModeIcon sx={{ ...iconStyle, color: purple[600] }} />
-                )}
-              </IconButton>
+              <BaseThemeButton />
             </ThemButtonContainer>
           </Dashboard>
           {simpleAuth ? <SimpleAuth authMode={authMode} /> : ''}

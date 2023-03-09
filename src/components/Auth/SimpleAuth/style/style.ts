@@ -1,4 +1,5 @@
 import { Button, styled } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 export const SimpleAuthLayout = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -36,4 +37,9 @@ export const SimpleAuthButton = styled(Button)(({ theme }) => ({
     boxShadow: theme.shadow.buttonHover,
   },
   transition: 'background-color 0.1s linear, box-shadow 0.1s linear',
+}))
+
+export const OAuthLink = styled(Link)(({ theme }) => ({
+  textDecoration: 'none',
+  color: '#fff',
 }))
