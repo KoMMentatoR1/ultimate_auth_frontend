@@ -16,14 +16,24 @@ export const registration =
       )
       localStorage.setItem('token', response.data.accessToken)
       dispatch(authSlice.actions.userFetchingSuccess(response.data))
-      dispatch(
-        snackbarSlice.actions.enqueueSnackbar({
-          id: new Date().getTime(),
-          message:
-            'Вы зарегистрировались, на почту отправленная ссылка для подтверждения',
-          variant: 'success',
-        })
-      )
+      if (!response.data.user.isActivated) {
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message:
+              'Вы зарегистрировались, на почту отправленная ссылка для подтверждения',
+            variant: 'success',
+          })
+        )
+      } else {
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message: 'Вы успешно зарегистрировались',
+            variant: 'success',
+          })
+        )
+      }
     } catch (e: any) {
       dispatch(
         snackbarSlice.actions.enqueueSnackbar({
@@ -49,6 +59,78 @@ export const login =
           variant: 'success',
         })
       )
+    } catch (e: any) {
+      dispatch(
+        snackbarSlice.actions.enqueueSnackbar({
+          id: new Date().getTime(),
+          message: e.response.data.message,
+          variant: 'error',
+        })
+      )
+    }
+  }
+
+export const oauthGoogleLogin =
+  (token: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(authSlice.actions.userFetching())
+      const response = await AuthService.oAuth2Google(token)
+      if (response.data.accessToken) {
+        dispatch(authSlice.actions.userFetchingSuccess(response.data))
+        localStorage.setItem('token', response.data.accessToken)
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message: 'Вы успешно вошли в аккаунт',
+            variant: 'success',
+          })
+        )
+      } else {
+        dispatch(authSlice.actions.userFetchingSuccess(response.data))
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message: 'Для окончания регистрации необходимо дополнить данные',
+            variant: 'success',
+          })
+        )
+      }
+    } catch (e: any) {
+      dispatch(
+        snackbarSlice.actions.enqueueSnackbar({
+          id: new Date().getTime(),
+          message: e.response.data.message,
+          variant: 'error',
+        })
+      )
+    }
+  }
+
+export const oauthYandexLogin =
+  (token: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(authSlice.actions.userFetching())
+      const response = await AuthService.oAuth2yandex(token)
+      if (response.data.accessToken) {
+        dispatch(authSlice.actions.userFetchingSuccess(response.data))
+        localStorage.setItem('token', response.data.accessToken)
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message: 'Вы успешно вошли в аккаунт',
+            variant: 'success',
+          })
+        )
+      } else {
+        dispatch(authSlice.actions.userFetchingSuccess(response.data))
+        dispatch(
+          snackbarSlice.actions.enqueueSnackbar({
+            id: new Date().getTime(),
+            message: 'Для окончания регистрации необходимо дополнить данные',
+            variant: 'success',
+          })
+        )
+      }
     } catch (e: any) {
       dispatch(
         snackbarSlice.actions.enqueueSnackbar({

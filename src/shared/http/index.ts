@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { IUser } from '../types/user'
 
-export const API_URL: string = `http://192.168.0.121:3001/api`
+export const API_URL: string = `http://localhost:3001/api`
 
 const $api = axios.create({
   baseURL: API_URL,

@@ -70,4 +70,37 @@ export default class AuthService {
       }
     )
   }
+
+  static async oAuth2Google(token: string): Promise<AxiosResponse<IUser>> {
+    return await $api.post<IUser>(
+      `/auth/oauth2/google/login`,
+      { token },
+      {
+        withCredentials: true,
+      }
+    )
+  }
+
+  static async oAuth2yandex(token: string): Promise<AxiosResponse<IUser>> {
+    return await $api.post<IUser>(
+      `/auth/oauth2/yandex/login`,
+      { token },
+      {
+        withCredentials: true,
+      }
+    )
+  }
+
+  static async oAuth2yandexToken(code: string) {
+    const params = new URLSearchParams()
+    params.append('grant_type', 'authorization_code')
+    params.append('code', code)
+    params.append('client_id', 'bcdec515185c4acfb70bff5585278224')
+    params.append('client_secret', '7c31a1e2848648259dad4b2953cdc147')
+    return await axios.post(`https://oauth.yandex.ru/token`, params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+  }
 }

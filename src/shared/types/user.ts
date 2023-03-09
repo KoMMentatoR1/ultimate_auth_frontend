@@ -1,7 +1,8 @@
 export interface IReqUser {
   email: string
   password: string
-  username: string
+  lastName: string
+  firstName: string
 }
 
 export interface IUser {
@@ -11,7 +12,8 @@ export interface IUser {
     email: string
     isActivated: boolean
     role: string
-    username: string
+    lastName: string
+    firstName: string
   }
 }
 

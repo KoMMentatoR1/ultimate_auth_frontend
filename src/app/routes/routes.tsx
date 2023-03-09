@@ -20,6 +20,10 @@ export const publicRoutes: Array<IRouter> = [
     element: <LoginPage />,
   },
   {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
     path: '/forgotPass',
     element: <ForgotPass />,
   },
