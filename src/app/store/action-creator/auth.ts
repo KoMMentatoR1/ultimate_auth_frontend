@@ -70,6 +70,17 @@ export const login =
     }
   }
 
+  export const logout =
+    () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(authSlice.actions.userFetching())
+    const response = await AuthService.logout()
+    console.log(response)
+  } catch (e: any) {
+
+  }
+    }
+
 export const oauthGoogleLogin =
   (token: string) => async (dispatch: AppDispatch) => {
     try {

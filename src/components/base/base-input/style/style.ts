@@ -11,6 +11,27 @@ export const Input = styled(TextField)(({ theme }) => ({
     color: theme.input.lightError,
     translate: 'color .1s linear',
   },
+  '& div.MuiInput-underline:before': {
+    borderBottom: `2px solid ${theme.input.disabled}`,
+  },
+  '& div.MuiInput-underline:hover:before': {
+    borderBottom: `2px solid ${theme.input.disabled}`,
+  },
+  '& div.MuiInput-underline:after': {
+    borderBottom: `2px solid ${theme.input.disabled}`,
+  },
+  '& div.Mui-disabled > input': {
+    "-webkit-text-fill-color": theme.input.disabled,
+  },
+  '& div.MuiInputBase-colorPrimary:before': {
+    color: theme.input.disabled,
+  },
+  '& div.MuiInputBase-colorPrimary:hover:before': {
+    color: theme.input.disabled,
+  },
+  '& div.MuiInputBase-colorPrimary:after': {
+    color: theme.input.disabled,
+  },
   '& > p': {
     textShadow:
       theme.mode === 'dark'

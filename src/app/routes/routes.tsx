@@ -4,6 +4,7 @@ import LoginPage from '../../pages/LoginPage/LoginPage'
 import Profile from '../../pages/Profile/Profile'
 import ForgotPass from '../../pages/ForgotPass/ForgotPass'
 import SwitchPass from '../../pages/SwitchPass/SwitchPass'
+import SecurityPage from '../../pages/SecurityPage/SecurityPage'
 
 interface IRouter {
   path: string
@@ -38,6 +39,10 @@ export const userRoutes: Array<IRouter> = [
   {
     path: '/Profile',
     element: <Profile />,
+  },
+  {
+    path: '/Security',
+    element: <SecurityPage />,
   },
   { path: '*', element: <Navigate to='/Profile' replace /> },
 ]

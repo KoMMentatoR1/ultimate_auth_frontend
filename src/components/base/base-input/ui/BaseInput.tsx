@@ -15,7 +15,7 @@ interface BaseInputProps {
   error?: boolean
   helperText?: string
   password?: boolean
-  disabled?: boolean
+  disabled?: boolean,
 }
 
 const BaseInput: FC<BaseInputProps> = ({

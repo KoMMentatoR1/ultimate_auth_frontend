@@ -1,9 +1,10 @@
+import React from 'react'
+import { useTypeSelector } from '../../../shared/hooks/useTypeSelector'
+import { BaseInput } from '../../base/base-input'
 import { useForm } from 'react-hook-form'
-import { useTypeSelector } from '../../../../shared/hooks/useTypeSelector'
-import { BaseInput } from '../../../base/base-input'
-import { BodyContainer, Container, Header } from '../style/style'
+import { BodyContainer, ButtonContainer, Container, Header, ShowButton } from '../style/style'
 
-export const ProfileBody = () => {
+export const SecurityBody = () => {
   const {
     control,
     formState: { errors },
@@ -13,7 +14,7 @@ export const ProfileBody = () => {
 
   return (
     <BodyContainer>
-      <Header>Профиль</Header>
+      <Header>Защита</Header>
       <Container>
         <BaseInput
           required
@@ -35,14 +36,24 @@ export const ProfileBody = () => {
           rules={{ required: 'Фамилия не может быть пустым' }}
           helperText={errors.firstName?.message as string}
         />
-        <BaseInput
-          disabled={true}
-          label='email (не доступно для изменения)'
-          name='email'
-          control={control}
-          defaultValue={user.user.email}
-        />
+
       </Container>
+      <ButtonContainer>
+        <ShowButton
+          color='success'
+          variant='contained'
+          size='large'
+        >
+          Сменить пароль
+        </ShowButton>
+        <ShowButton
+          color='success'
+          variant='contained'
+          size='large'
+        >
+          Показать все авторизованные устройства
+        </ShowButton>
+      </ButtonContainer>
     </BodyContainer>
   )
 }

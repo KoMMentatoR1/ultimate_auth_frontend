@@ -30,6 +30,10 @@ export default class AuthService {
     })
   }
 
+  static async logout(): Promise<AxiosResponse<IUser>> {
+    return $api.post<IUser>('/auth/logout',{ withCredentials: true })
+  }
+
   static async newPassword(
     code: string,
     newPass: string

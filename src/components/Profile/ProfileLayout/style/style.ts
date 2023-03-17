@@ -1,4 +1,5 @@
 import {
+  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -29,6 +30,15 @@ export const LayoutBody = styled('div')(({ theme }) => ({
   background: theme.background.main,
   transition: 'background .1s linear',
 }))
+
+export const CustomListItem = styled(ListItem)(({ theme }) => ({
+  color: theme.primary.main,
+  ':hover': {
+    color: theme.primary.hover,
+  },
+  transition: 'color .1s linear',
+}))
+
 
 export const CustomListItemButton = styled(ListItemButton)(({ theme }) => ({
   color: theme.primary.main,
