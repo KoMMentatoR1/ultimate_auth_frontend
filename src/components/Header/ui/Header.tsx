@@ -1,14 +1,20 @@
-import {IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from '@mui/material'
 import { ButtonContainer, CustomAppBar, HeaderBox } from '../style/style'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import { BaseThemeButton } from '../../base/base-theme-button'
 import { useState } from 'react'
 import { useAction } from '../../../shared/hooks/useAction'
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import ShieldIcon from '@mui/icons-material/Shield'
-import LogoutIcon from '@mui/icons-material/Logout';
-import {CustomListItemIcon } from '../../Profile/ProfileLayout/style/style'
+import LogoutIcon from '@mui/icons-material/Logout'
+import { CustomListItemIcon } from '../../Profile/ProfileLayout/style/style'
 import { useNavigate } from 'react-router-dom'
 
 const menu = [
@@ -17,29 +23,24 @@ const menu = [
 ]
 
 export const Header = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FieldValues>()
-
-  const {logout} = useAction()
+  const { logout } = useAction()
 
   const navigator = useNavigate()
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-    logout()
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
-  const onSubmit: SubmitHandler<FieldValues> = data =>
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const onLogout = () => {
     logout()
+  }
 
   return (
     <CustomAppBar position='static'>
@@ -71,7 +72,7 @@ export const Header = () => {
         </HeaderBox>
         <Menu
           anchorEl={anchorEl}
-          id="account-menu"
+          id='account-menu'
           open={open}
           onClose={handleClose}
           onClick={handleClose}
@@ -107,12 +108,13 @@ export const Header = () => {
           {menu.map(el => (
             <MenuItem onClick={() => navigator(el.path)}>
               <CustomListItemIcon>{el.icon}</CustomListItemIcon>
-                {el.name}
+              {el.name}
             </MenuItem>
-
           ))}
-          <MenuItem onClick={handleSubmit(onSubmit)}>
-            <CustomListItemIcon><LogoutIcon/></CustomListItemIcon>
+          <MenuItem onClick={() => onLogout()}>
+            <CustomListItemIcon>
+              <LogoutIcon />
+            </CustomListItemIcon>
             Выйти
           </MenuItem>
         </Menu>
