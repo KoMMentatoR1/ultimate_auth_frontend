@@ -30,10 +30,6 @@ export default class AuthService {
     })
   }
 
-  static async logout(): Promise<AxiosResponse<IUser>> {
-    return $api.post<IUser>('/auth/logout',{ withCredentials: true })
-  }
-
   static async newPassword(
     code: string,
     newPass: string
@@ -42,6 +38,10 @@ export default class AuthService {
       code,
       newPass,
     })
+  }
+
+  static async logout(): Promise<AxiosResponse<void>> {
+    return await $api.get<void>(`/auth/logout`, { withCredentials: true })
   }
 
   static async refresh(): Promise<AxiosResponse<IUser>> {

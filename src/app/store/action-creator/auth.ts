@@ -70,16 +70,29 @@ export const login =
     }
   }
 
-  export const logout =
-    () => async (dispatch: AppDispatch) => {
+export const logout = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(authSlice.actions.userFetching())
-    const response = await AuthService.logout()
-    console.log(response)
+    const data = await AuthService.logout()
+    localStorage.removeItem('token')
+    dispatch(authSlice.actions.userClear())
+    dispatch(
+      snackbarSlice.actions.enqueueSnackbar({
+        id: new Date().getTime(),
+        message: 'Вы успешно вышли из акаунта',
+        variant: 'success',
+      })
+    )
   } catch (e: any) {
-
+    dispatch(
+      snackbarSlice.actions.enqueueSnackbar({
+        id: new Date().getTime(),
+        message: e.response.data.message,
+        variant: 'error',
+      })
+    )
   }
-    }
+}
 
 export const oauthGoogleLogin =
   (token: string) => async (dispatch: AppDispatch) => {

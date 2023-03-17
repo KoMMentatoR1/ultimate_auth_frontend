@@ -48,7 +48,16 @@ export const authSlice = createSlice({
       state.success = action.payload
     },
     userClear(state) {
-      state = initialState
+      state.isLoading = false
+      state.user.accessToken = ''
+      state.user.user = {
+        id: 0,
+        email: '',
+        firstName: '',
+        isActivated: false,
+        lastName: '',
+        role: '',
+      }
     },
   },
 })
