@@ -2,15 +2,16 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import {
   AuthButton,
-  AuthButtonContainer,
 } from '../../components/Auth/AuthButtonContainer'
-import { ForgotPassButton } from '../../components/Auth/AuthButtonContainer/style/style'
+import { ButtonContainer, ForgotPassButton } from '../../components/Auth/AuthButtonContainer/style/style'
 import {
   AuthPageLayout,
   FormContainer,
 } from '../../components/Auth/AuthPageLayout'
 import { BaseInput } from '../../components/base/base-input'
 import { useAction } from '../../shared/hooks/useAction'
+
+
 const LoginPage = () => {
   const {
     control,
@@ -63,13 +64,13 @@ const LoginPage = () => {
         >
           Forgot password?
         </ForgotPassButton>
-        <AuthButtonContainer>
+        <ButtonContainer>
           <AuthButton
             onClick={() => navigator('/register')}
             fullWidth
             color='success'
             variant='contained'
-            size='large'
+            size='small'
           >
             Sing up
           </AuthButton>
@@ -82,7 +83,7 @@ const LoginPage = () => {
           >
             log in
           </AuthButton>
-        </AuthButtonContainer>
+        </ButtonContainer>
       </FormContainer>
     </AuthPageLayout>
   )

@@ -1,4 +1,4 @@
-import { green, purple, red, grey } from '@mui/material/colors'
+import { green, purple, red, grey, blue, blueGrey } from '@mui/material/colors'
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -62,13 +62,13 @@ export const getDesignTokens = (mode: string) => ({
   ...(mode === 'light'
     ? {
         primary: {
-          main: green[400],
-          hover: green[600],
+          main: blue[400],
+          hover: blue[600],
         },
         background: {
           main: '#ffffff',
-          button: green[600],
-          buttonHover: green[700],
+          button: blue[500],
+          buttonHover: blue[700],
         },
         shadow: {
           dashboard: `0px 0px 30px 2px rgba(0, 0, 0, 0.6)`,
@@ -76,9 +76,9 @@ export const getDesignTokens = (mode: string) => ({
           buttonHover: 'none',
         },
         input: {
-          main: green[500],
-          hover: green[700],
-          disabled: grey[600],
+          main: blue[300],
+          hover: blue[500],
+          disabled: blueGrey[600],
           error: red[400],
           darkError: red[600],
           lightError: red[200],
@@ -88,23 +88,23 @@ export const getDesignTokens = (mode: string) => ({
       }
     : {
         primary: {
-          main: purple[400],
-          hover: purple[600],
+          main: blue[400],
+          hover: blue[600],
         },
         background: {
           main: '#121212',
-          button: purple[600],
-          buttonHover: purple[700],
+          button: blue[500],
+          buttonHover: blue[700],
         },
         shadow: {
-          dashboard: `0px 0px 30px 2px ${purple[400]}`,
-          button: `0 0 5px 1px ${purple[600]}`,
-          buttonHover: `0 0 5px 1px ${purple[700]}`,
+          dashboard: `0px 0px 30px 2px ${blue[400]}`,
+          button: `0 0 5px 1px ${blue[600]}`,
+          buttonHover: `0 0 5px 1px ${blue[700]}`,
         },
         input: {
-          main: purple[200],
-          hover: purple[400],
-          disabled: purple[700],
+          main: blue[300],
+          hover: blue[500],
+          disabled: blueGrey[600],
           error: red[400],
           darkError: red[600],
           lightError: red[200],

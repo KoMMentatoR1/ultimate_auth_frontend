@@ -1,6 +1,6 @@
 import { AppBar, styled } from '@mui/material'
 
-export const CastomAppBar = styled(AppBar)(({ theme }) => ({
+export const CustomAppBar = styled(AppBar)(({ theme }) => ({
   position: 'fixed',
   backgroundColor: theme.background.main,
   boxShadow: 'none',
